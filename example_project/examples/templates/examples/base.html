@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load webdesign %}
+{% load richtemplates_tags %}
+{% load native %}
+
+{% block title %}Richtemplates examples{% endblock %}
+
+{% block extra-head %}{{ block.super }}
+{% endblock %}
+
+{% block col-left-title %}Left column title{% endblock %}
+{% block col-left-content %}
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_home %}">Home</a></li>
+        <li><a href="{% url richtemplates_examples_messages %}">Messages</a></li>
+        <li><a href="{% url richtemplates_examples_links %}">Links</a></li>
+        <li><a href="{% url richtemplates_examples_colors %}">Colors</a></li>
+        <li><a href="{% url richtemplates_examples_contact %}">Contact form</a></li>
+        <li><a href="{% url richtemplates_examples_multiple_choices %}">Multiple choices form</a></li>
+        <li><a href="{% url richtemplates_examples_tooltips %}">Tooltips</a></li>
+        <li><a href="{% url richtemplates_examples_forbidden %}">Forbidden</a></li>
+    </ul>
+    <hr/>
+
+    <h3>jQuery Integration</h3>
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_buttons %}">Buttons</a></li>
+        <li><a href="{% url richtemplates_examples_tabs %}">Tabs</a></li>
+        {#<li><a href="{% url richtemplates_examples_jqueryui_icons %}">Icons</a></li>#}
+        <li><a href="{% url richtemplates_examples_jqplot_bars %}">jqPlot - bars</a></li>
+    </ul>
+    <hr/>
+
+    <h3>OpenFlashCharts</h3>
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_charts_bars %}">Multiple bars chart</a></li>
+    </ul>
+    <hr/>
+
+    <h3>Skins</h3>
+    <ul class="nav-vertical">
+        {% get_skin_list as skin_list %}
+        {% for skin in skin_list %}
+        <li><a href="{% url richtemplates_examples_set_skin skin.alias %}">{{ skin.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block col-main-title %}Main column title{% endblock %}
+{% block col-main-content %}
+<h1>Home</h1>
+
+{% lorem 5 p %}
+
+{% endblock %}
